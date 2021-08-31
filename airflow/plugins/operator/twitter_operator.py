@@ -59,7 +59,7 @@ if __name__ == '__main__':
             query='Neoenergia',
             file_path=join(
                 '/Users/alexsandercaproni/Documents/Python Projects/twitter_pipeline/datalake',
-                'twitter_aluraonline',
+                'neo_tweets',
                 'extract_date={{ ds }}',
                 'Neoenergia_{{ ds_nodash }}.json'
                 ),
