@@ -8,7 +8,7 @@ from os.path import join
 
 from airflow.models import DAG, BaseOperator, TaskInstance
 from airflow.utils.decorators import apply_defaults
-from airflow.plugins.hooks.twitter_hook import TwitterHook
+from plugins.hooks.twitter_hook import TwitterHook
 
 
 class TwitterOperator(BaseOperator):
@@ -53,12 +53,13 @@ class TwitterOperator(BaseOperator):
                 json.dump(pg, output_file, ensure_ascii=False)
                 output_file.write('\n')
 
+
 if __name__ == '__main__':
     with DAG(dag_id='TwitterTest', start_date=datetime.now()) as dag:
         to = TwitterOperator(
             query='Neoenergia',
             file_path=join(
-                '/Users/alexsandercaproni/Documents/Python Projects/twitter_pipeline/datalake',
+                '/Users/alexsandercaproni/Documents/python_projects/twitter_data_pipeline/datalake/bronze/neo_tweets',
                 'neo_tweets',
                 'extract_date={{ ds }}',
                 'Neoenergia_{{ ds_nodash }}.json'
